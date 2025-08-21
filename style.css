@@ -1,4 +1,4 @@
-/* Global Styles & Variables */
+
 :root {
     --bg-color: #121212;
     --text-color: #E0E0E0;
@@ -13,16 +13,23 @@ body {
     font-family: 'Fira Code', monospace;
     line-height: 1.7;
     font-size: 16px;
+
+
+
+    -webkit-user-select: none;  
+    -moz-user-select: none;  
+    -ms-user-select: none; 
+    user-select: none; 
 }
 
-/* Main Container */
+
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
     padding: 40px 20px;
 }
 
-/* Links */
+
 a {
     color: var(--text-color);
     text-decoration: none;
@@ -33,16 +40,10 @@ a:hover {
     color: var(--primary-color);
 }
 
-/* Header */
+
 header {
     text-align: center;
     margin-bottom: 60px;
-}
-
-.logo {
-    font-size: 1.5rem;
-    color: var(--secondary-color);
-    margin-bottom: 20px;
 }
 
 h1 {
@@ -57,7 +58,7 @@ h1 {
     color: var(--secondary-color);
 }
 
-/* Sections */
+
 section {
     margin-bottom: 50px;
 }
@@ -65,11 +66,11 @@ section {
 h2 {
     font-size: 1.2rem;
     color: var(--secondary-color);
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     font-weight: 400;
 }
 
-/* List Styles for Work/Projects/Social */
+
 .list-item {
     margin-bottom: 25px;
 }
@@ -78,7 +79,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    flex-wrap: wrap; /* Allows wrapping on small screens */
+    flex-wrap: wrap;
 }
 
 .item-header h3 {
@@ -91,12 +92,26 @@ h2 {
     font-size: 0.9rem;
 }
 
-.list-item p {
-    color: var(--secondary-color);
-    margin-top: 5px;
+
+.list-item .role {
+    color: var(--text-color); 
+    font-weight: 90;        
+    margin-top: -20px;
 }
 
-/* Footer */
+.list-item .description {
+    color: var(--secondary-color);
+    margin-top: -10px;
+    font-size: 0.95rem;
+}
+
+
+#projects .list-item p {
+    color: var(--secondary-color);
+    margin-top: 5px;
+    font-size: 0.95rem;
+}
+
 footer {
     text-align: center;
     margin-top: 60px;
@@ -104,7 +119,6 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Responsive adjustments */
 @media (max-width: 600px) {
     body {
         font-size: 14px;
