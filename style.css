@@ -1,0 +1,129 @@
+/* Global Styles & Variables */
+:root {
+    --bg-color: #121212;
+    --text-color: #E0E0E0;
+    --primary-color: #BB86FC;
+    --secondary-color: #6c757d;
+    --container-width: 700px;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Fira Code', monospace;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+/* Main Container */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Links */
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.intro {
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto;
+    color: var(--secondary-color);
+}
+
+/* Sections */
+section {
+    margin-bottom: 50px;
+}
+
+h2 {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+/* List Styles for Work/Projects/Social */
+.list-item {
+    margin-bottom: 25px;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap; /* Allows wrapping on small screens */
+}
+
+.item-header h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.item-header span {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+.list-item p {
+    color: var(--secondary-color);
+    margin-top: 5px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 60px;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .intro {
+        font-size: 1rem;
+    }
+    
+    .item-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .item-header span {
+        margin-top: 5px;
+    }
+}
