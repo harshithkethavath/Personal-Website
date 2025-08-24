@@ -96,7 +96,7 @@ h2 {
 .list-item .role {
     color: var(--text-color); 
     font-weight: 90;        
-    margin-top: -20px;
+    margin-top: 0px;
 }
 
 .list-item .description {
