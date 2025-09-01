@@ -90,6 +90,7 @@ h2 {
 .item-header span {
     color: var(--secondary-color);
     font-size: 0.9rem;
+    margin-bottom: 25px;
 }
 
 
