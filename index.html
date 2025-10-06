@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harshith Kethavath</title>
+    <title>Harshith Kethavath - Home</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,106 +11,59 @@
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>Hi, I'm Harshith Kethavath.</h1>
-
-            <p class="intro">
-                I'm a Computer Science Master's student at the University of Georgia with a deep interest in Cloud Engineering. While my core passion lies in building and automating scalable cloud infrastructure, I also have hands-on experience in Front-end Web Development, Data Science and Machine Learning.
-
-            </p>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">H|K</a>
+            <div class="nav-links">
+                <a href="work.html">Work</a>
+                <a href="projects.html">Projects</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container" id="top">
+        <h1>Hi, I'm Harshith Kethavath.</h1>
+        <header class="split-header"> 
+            
+            <img src="./assets/profile-picture.png" alt="Harshith Kethavath - Profile Photo" class="profile-img">
+            
+            <div class="header-content"> 
+                <p class="intro">
+                    I'm a Computer Science Master's student at the University of Georgia with a deep interest in Cloud Engineering. While my core passion lies in building and automating scalable cloud infrastructure, I also have hands-on experience in Front-end Web Development, Data Science and Machine Learning.
+                </p>
+            </div>
+            
         </header>
 
         <main>
-            <section>
-                <h2>[ work ]</h2>
-                <div class="list-container">
-                    <div class="list-item">
-                        <div class="item-header">
-                            <h3><a href="https://inkeekim.github.io/index.html" target="_blank">UGA Edge/Cloud Research Lab</a></h3>
-                            <span>Oct 2024 &mdash; Present</span>
-                        </div>
-                        <p class="role">Research Assistant</p>
-                        <p class="description">Developed and deployed a suite of Computer Vision scripts, and a Recommendation Model, onto Jetson Orin Nano,
-generating a 7 million point dataset to benchmark throughput against thermal stress. Discovered critical performance degradation across models when GPU temperatures reached the 60 to 70°C range under
-full load, including a 36% drop in recommendation system at 75°C.</p>
-                    </div>
-                    <div class="list-item">
-                        <div class="item-header">
-                            <h3><a href="https://www.hcltech.com" target="_blank">HCLTech</a></h3>
-                            <span>Oct 2023 &mdash; Jun 2024</span>
-                        </div>
-                        <p class="role">Cloud Engineer</p>
-                        <p class="description">Automated HPC cluster provisioning using SOCA template, saving 80 manual configuration hours. Resolved over 120
-client tickets related to cluster access, job submission, and queue management. Engineered and documented reusable POCs for large-scale systems, contributing to strategic decisions, and helped
-reducing new hire onboarding time by 75%.</p>
-                    </div>
-                    <div class="list-item">
-                        <div class="item-header">
-                            <h3><a href="https://binstitute.org" target="_blank">Bhaktivedanta Institute</a></h3>
-                            <span>May 2022 &mdash; Jul 2022</span>
-                        </div>
-                        <p class="role">Web Development Intern</p>
-                        <p class="description">Developed 6 new responsive front-end pages and refactored main CSS file to reduce code duplication by 27%. Coordinated with back-end developers to integrate APIs seamlessly into front-end, performed regular testing, resolved
-over 30 bugs and updated website content, increasing user engagement by 15%.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h2>[ projects ]</h2>
-                <div class="list-container">
-                    <div class="list-item">
-                         <div class="item-header">
-                            <h3><a href="#" target="_blank">Creo on Amazon AppStream 2.0</a></h3>
-                            <span>Terraform, Azure AD, FSx, FSLogix</span>
-                        </div>
-                        <p class="description">Designed a solution with SSO access, by integrating IAM with Azure AD, provisioning AppStream desktops, and
-implementing FSLogix with FSx to enable a scalable user cache of up to 3TB, replacing the 1GB default. Implemented automation for provisioning, configuration, and deployment of resources using Terraform for IaC, reducing
-deployment time by 20%.</p>
-                    </div>
-                    <div class="list-item">
-                         <div class="item-header">
-                            <h3><a href="#" target="_blank">3-Tier Web Application</a></h3>
-                            <span>HTML, CSS, JavaScript, EC2, ALB, RDS, VPC</span>
-                        </div>
-                        <p class="description">Built a 3-tier web architecture on AWS for a student club, using an auto-scaling web tier, and an Application Tier with
-a secure backend and Bastion host, and Amazon RDS for MySQL for secure inventory management. Configured VPC, subnets, route tables, and security groups to enhance security and traffic segregation. Used
-auto-scaling groups for EC2 and an ALB to optimize costs by 25% while ensuring high availability.</p>
-                    </div>
-                     <div class="list-item">
-                         <div class="item-header">
-                            <h3><a href="#" target="_blank">Serverless Sending Application</a></h3>
-                            <span>Python, Lambda, SNS, SQS</span>
-                        </div>
-                        <p class="description">Built a web-based solution enabling users to send emails and SMS via Amazon SES and SNS, integrated with API
-Gateway and AWS Lambda for processing requests, to achieve an average response time of 300 ms. Orchestrated workflows using AWS Step Functions and Amazon S3, resulting in a secure, serverless, event-driven
-infrastructure with a pay per use model that eliminated all idle infrastructure costs.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h2>[ social ]</h2>
+            <section id="social">
+                <h2>[ contact ]</h2>
 
                 <div class="list-container">
-                    <div class="list-item">
-                        <h3><a href="https://github.com/harshithkethavath" target="_blank">github</a></h3>
-                    </div>
-                    <div class="list-item">
-                        <h3><a href="https://linkedin.com/in/harshithkethavath" target="_blank">linkedin</a></h3>
-                    </div>
+
                     <div class="list-item">
                         <h3><a href="mailto:hello@harshithkethavath.com">email</a></h3>
                     </div>
+
+                    <div class="list-item">
+                        <h3><a href="https://linkedin.com/in/harshithkethavath" target="_blank">linkedin</a></h3>
+                    </div>
+
+                    <div class="list-item">
+                        <h3><a href="https://github.com/harshithkethavath" target="_blank">github</a></h3>
+                    </div>
+
+                    <div class="list-item">
+                        <h3><a href="./assets/Harshith_Resume.pdf" target="_blank">resume</a></h3>
+                    </div>
+
                 </div>
             </section>
         </main>
-
-        <footer>
-            <p>&copy; 2025 Harshith Kethavath</p>
-        </footer>
     </div>
+
+    <footer>
+        <p>&copy; 2025 Harshith Kethavath</p>
+    </footer>
 
 </body>
 </html>

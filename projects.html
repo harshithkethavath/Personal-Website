@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harshith Kethavath - Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">H|K</a>
+            <div class="nav-links">
+                <a href="work.html">Work</a>
+                <a href="projects.html">Projects</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <main>
+            <section id="projects">
+                <h2>[ projects ]</h2>
+                <div class="list-container">
+                    <div class="list-item">
+                         <div class="item-header">
+                            <h3><a href="#" target="_blank">Creo on Amazon AppStream 2.0</a></h3>
+                            <span>Terraform, Azure AD, FSx, FSLogix</span>
+                        </div>
+                        <p class="description">Designed a solution with SSO access, by integrating IAM with Azure AD, provisioning AppStream desktops, and
+implementing FSLogix with FSx to enable a scalable user cache of up to 3TB, replacing the 1GB default. Implemented automation for provisioning, configuration, and deployment of resources using Terraform for IaC, reducing
+deployment time by 20%.</p>
+                    </div>
+                    <div class="list-item">
+                         <div class="item-header">
+                            <h3><a href="#" target="_blank">3-Tier Web Application</a></h3>
+                            <span>HTML, CSS, JavaScript, EC2, ALB, RDS, VPC</span>
+                        </div>
+                        <p class="description">Built a 3-tier web architecture on AWS for a student club, using an auto-scaling web tier, and an Application Tier with
+a secure backend and Bastion host, and Amazon RDS for MySQL for secure inventory management. Configured VPC, subnets, route tables, and security groups to enhance security and traffic segregation. Used
+auto-scaling groups for EC2 and an ALB to optimize costs by 25% while ensuring high availability.</p>
+                    </div>
+                     <div class="list-item">
+                         <div class="item-header">
+                            <h3><a href="#" target="_blank">Serverless Sending Application</a></h3>
+                            <span>Python, Lambda, SNS, SQS</span>
+                        </div>
+                        <p class="description">Built a web-based solution enabling users to send emails and SMS via Amazon SES and SNS, integrated with API
+Gateway and AWS Lambda for processing requests, to achieve an average response time of 300 ms. Orchestrated workflows using AWS Step Functions and Amazon S3, resulting in a secure, serverless, event-driven
+infrastructure with a pay per use model that eliminated all idle infrastructure costs.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Harshith Kethavath</p>
+    </footer>
+
+</body>
+</html>
