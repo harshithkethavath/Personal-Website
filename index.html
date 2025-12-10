@@ -1,69 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harshith Kethavath - Home</title>
+    <title>Harshith Kethavath | Cloud Engineer</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-brand">H|K</a>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="nav-brand">Harshith Kethavath</a>
             <div class="nav-links">
-                <a href="work.html">Work</a>
-                <a href="projects.html">Projects</a>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#contact">Contact</a>
             </div>
         </div>
     </nav>
-    <div class="container" id="top">
-        <h1>Hi, I'm Harshith Kethavath.</h1>
-        <header class="split-header"> 
-            
-            <img src="./assets/profile-picture.png" alt="Harshith Kethavath - Profile Photo" class="profile-img">
-            
-            <div class="header-content"> 
-                <p class="intro">
-                    I'm a Computer Science Master's student at the University of Georgia with a deep interest in Cloud Engineering. While my core passion lies in building and automating scalable cloud infrastructure, I also have hands-on experience in Front-end Web Development, Data Science and Machine Learning.
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Cloud, Edge, and ML: <br> From Research to Reliable Deployment</h1>
+                <div class="hero-lower-row">
+                    <div class="hero-text-col">
+                        <h2>I am <span class="txt-type" data-wait="3000"
+                                data-words='["a Cloud Engineer", "a Computer Vision Researcher", "an Edge AI Researcher"]'></span>
+                        </h2>
+                        <p>Computer Science Master’s student at the University of Georgia. Specializing in the
+                            intersection of cloud infrastructure and ML pipelines.</p>
+                        <div class="hero-cta">
+                            <a href="./assets/Harshith_Resume.pdf" target="_blank" class="btn btn-primary">View
+                                Resume</a>
+                            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                        </div>
+                    </div>
+                    <div class="hero-emoji-col">
+                        <div class="hero-emoji"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="section bg-surface">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>Mission-driven engineer focused on real-world AI performance and cloud scale.</p>
+            </div>
+            <div style="max-width: 800px; color: var(--text-main); font-size: 1.1rem; line-height: 1.8;">
+                <p>I’m pursuing my Master’s in Computer Science at the University of Georgia. My work spans cloud
+                    infrastructure and applied ML systems, shaped by industry experience as a Cloud Engineer at HCLTech
+                    supporting large-scale AWS and HPC environments and research in vision-based weather intelligence
+                    and thermal-aware edge AI.</p>
+                <br>
+                <p>My toolkit includes <strong>AWS, Terraform, Python, and Linux</strong> along with a strong systems
+                    mindset for reproducible experimentation and deployment. I enjoy designing infrastructure and ML
+                    pipelines that are efficient, measurable, and resilient.
                 </p>
             </div>
-            
-        </header>
+        </div>
+    </section>
 
-        <main>
-            <section id="social">
-                <h2>[ contact ]</h2>
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Experience</h2>
+                <p>My professional journey and research contributions.</p>
+            </div>
 
-                <div class="list-container">
+            <div class="timeline">
 
-                    <div class="list-item">
-                        <h3><a href="mailto:hello@harshithkethavath.com">email</a></h3>
-                    </div>
+                <div class="timeline-item">
+                    <div class="role-title">Graduate Student Assistant</div>
+                    <div class="company-name"><a href="https://weiming.uga.edu/gaim" target="_blank">Lab
+                            for GeoInformatics and AI Modeling</a></div>
+                    <span class="duration">Oct 2025 — Present</span>
+                    <p class="role-desc">
+                        Developing a deep learning framework using PyTorch and Hugging Face Transformers for early
+                        weather prediction by fine-tuning Vision Transformers (ViT) on upward-facing sky images.
+                        Engineering a data-labeling pipeline to process and align historical ASOS weather station data
+                        with image timestamps, generating ground-truth labels for both classification and regression
+                        tasks.
+                    </p>
+                </div>
 
-                    <div class="list-item">
-                        <h3><a href="https://linkedin.com/in/harshithkethavath" target="_blank">linkedin</a></h3>
-                    </div>
+                <div class="timeline-item">
+                    <div class="role-title">Student Researcher</div>
+                    <div class="company-name"><a href="https://inkeekim.github.io/index.html" target="_blank">UGA
+                            Edge/Cloud Research Lab</a></div>
+                    <span class="duration">Oct 2024 — Present</span>
+                    <p class="role-desc">
+                        Developed and deployed Computer Vision scripts and Recommendation Models onto Jetson Orin Nano
+                        devices. Generated a 7-million point dataset to benchmark throughput against thermal stress.
+                        Discovered critical performance degradation in AI models (up to 36% drop) when GPU temperatures
+                        exceeded 75°C.
+                    </p>
+                </div>
 
-                    <div class="list-item">
-                        <h3><a href="https://github.com/harshithkethavath" target="_blank">github</a></h3>
-                    </div>
+                <div class="timeline-item">
+                    <div class="role-title">Cloud Engineer</div>
+                    <div class="company-name"><a href="https://www.hcltech.com" target="_blank">HCLTech</a></div>
+                    <span class="duration">Oct 2023 — Jun 2024</span>
+                    <p class="role-desc">
+                        Automated HPC cluster provisioning using AWS SOCA, saving 80+ manual configuration hours.
+                        Resolved 120+ client tickets related to cluster access and job scheduling. Engineered reusable
+                        POCs for large-scale systems and reduced new hire onboarding time by 75% through improved
+                        documentation and automation.
+                    </p>
+                </div>
 
-                    <div class="list-item">
-                        <h3><a href="./assets/Harshith_Resume.pdf" target="_blank">resume</a></h3>
-                    </div>
+                <div class="timeline-item">
+                    <div class="role-title">Web Development Intern</div>
+                    <div class="company-name"><a href="https://binstitute.org" target="_blank">Bhaktivedanta
+                            Institute</a></div>
+                    <span class="duration">May 2022 — Jul 2022</span>
+                    <p class="role-desc">
+                        Developed 6 responsive front-end pages and refactored CSS to reduce code duplication by 27%.
+                        Collaborated with back-end teams to integrate APIs, resolved 30+ bugs, and increased user
+                        engagement by 15% through UI/UX improvements.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section bg-surface">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>Technical implementations and system designs.</p>
+            </div>
+
+            <div class="carousel-container">
+                <div class="carousel-track">
+
+                    <article class="project-card">
+                        <div class="card-icon">🧠</div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">PyTorch</span>
+                        </div>
+                        <h3>PocketRAG: A Lightweight, Reproducible Framework for Benchmarking RAG</h3>
+                        <p class="project-desc">
+                            Engineered a modular RAG pipeline on Apple Silicon (M3) using PyTorch MPS and Python,
+                            implementing hybrid retrieval (BM25 & FAISS). Developed a reproducible CLI evaluation
+                            toolkit.
+                        </p>
+                        <a href="https://github.com/harshithkethavath/PocketRAG" class="card-link">View Project
+                            &rarr;</a>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="card-icon">⚛️</div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Quantum Computing</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Qiskit</span>
+                        </div>
+                        <h3>Q-Select: A Framework for Selection of Quantum Encodings</h3>
+                        <p class="project-desc">
+                            Engineered a QML benchmarking pipeline to profile 6 quantum encoding methods across 6
+                            diverse datasets. Trained a random forest regressor to predict classifier accuracy.
+                        </p>
+                        <a href="https://github.com/harshithkethavath/Q-Select" class="card-link">View Project
+                            &rarr;</a>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="card-icon">🌐</div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <h3>W-Shingling for Wikipedia Document Evolution Study</h3>
+                        <p class="project-desc">
+                            Engineered a Python data pipeline to analyze Wikipedia article evolution using W-Shingling,
+                            MD5 hashing, and MinHash. Discovered shingle size was the dominant cost factor.
+                        </p>
+                        <a href="https://github.com/harshithkethavath/Wikipedia_Evolution_Study" class="card-link">View
+                            Project &rarr;</a>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="card-icon">🚗</div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">NumPy</span>
+                        </div>
+                        <h3>Geospatial and Temporal Analysis of Clark County Crash Data</h3>
+                        <p class="project-desc">
+                            Engineered a data pipeline to clean and feature-engineer 9+ years of crash data. Executed
+                            geospatial analysis to identify high-risk periods around major events.
+                        </p>
+                        <a href="https://github.com/harshithkethavath/Analysis_of_Clark_County_Crash_Data"
+                            class="card-link">View Project &rarr;</a>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="card-icon">☁️</div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Terraform</span>
+                            <span class="tech-tag">Azure AD</span>
+                            <span class="tech-tag">AWS FSx</span>
+                        </div>
+                        <h3>Creo on Amazon AppStream 2.0</h3>
+                        <p class="project-desc">
+                            Designed a scalable desktop virtualization solution. Integrated IAM with Azure AD and
+                            implemented FSLogix to expand user cache. Used Terraform to reduce deployment time.
+                        </p>
+                        <a href="#" class="card-link">View Project &rarr;</a>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="card-icon">🏗️</div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">AWS EC2</span>
+                            <span class="tech-tag">RDS</span>
+                            <span class="tech-tag">VPC</span>
+                        </div>
+                        <h3>3-Tier Web Application</h3>
+                        <p class="project-desc">
+                            Architected a highly available 3-tier web solution using ASGs and ALBs. Secured the backend
+                            with private subnets and specific security groups.
+                        </p>
+                        <a href="#" class="card-link">View Project &rarr;</a>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="card-icon">⚡</div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AWS Lambda</span>
+                            <span class="tech-tag">SNS/SQS</span>
+                        </div>
+                        <h3>Serverless Sending Application</h3>
+                        <p class="project-desc">
+                            Built a serverless event-driven notification system using Amazon SES and SNS. Orchestrated
+                            workflows to achieve 300ms response times and eliminated idle costs.
+                        </p>
+                        <a href="#" class="card-link">View Project &rarr;</a>
+                    </article>
 
                 </div>
-            </section>
-        </main>
-    </div>
+            </div>
+
+            <div class="carousel-controls">
+                <button class="carousel-btn prev" aria-label="Previous Slide">&larr;</button>
+                <div class="carousel-dots">
+                </div>
+                <button class="carousel-btn next" aria-label="Next Slide">&rarr;</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Certifications</h2>
+                <p>Validated expertise in cloud and infrastructure.</p>
+            </div>
+
+            <div class="projects-grid">
+
+                <article class="project-card" style="align-items: center; text-align: center;">
+                    <div class="card-icon"><img src="assets/icons/AWS Certified Cloud Practitioner.png"
+                            alt="AWS Certified Cloud Practitioner" width="64" height="64"></div>
+                    <h3>AWS Certified Cloud Practitioner</h3>
+                    <p class="role-desc" style="margin-bottom: 8px;">Foundational</p>
+                    <span class="tech-tag" style="margin-bottom: 16px;">Amazon Web Services</span>
+                    <a href="https://www.credly.com/badges/2a0bd06e-3de3-4b04-acfd-63bc00eec498"
+                        class="card-link">Validate Credential &rarr;</a>
+                </article>
+
+                <article class="project-card" style="align-items: center; text-align: center;">
+                    <div class="card-icon"><img src="assets/icons/AWS Certified CloudOps Engineer.png"
+                            alt="AWS Certified CloudOps Engineer" width="64" height="64"></div>
+                    <h3>AWS Certified CloudOps Engineer</h3>
+                    <p class="role-desc" style="margin-bottom: 8px;">Associate</p>
+                    <span class="tech-tag" style="margin-bottom: 16px;">Amazon Web Services</span>
+                    <a class="card-link">Pursuing Certification &ast;</a>
+                </article>
+
+                <article class="project-card" style="align-items: center; text-align: center;">
+                    <div class="card-icon"><img src="assets/icons/HashiCorp Certified Terraform Associate.png"
+                            alt="HashiCorp Certified Terraform Associate" width="64" height="64"></div>
+                    <h3>HashiCorp Certified Terraform Associate</h3>
+                    <p class="role-desc" style="margin-bottom: 8px;">Associate</p>
+                    <span class="tech-tag" style="margin-bottom: 16px;">HashiCorp</span>
+                    <a class="card-link">Pursuing Certification &ast;</a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section bg-surface">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-content">
+                    <div class="section-header">
+                        <h2>Let's Connect</h2>
+                        <p>📍 Athens, GA <br> Open to opportunities and interesting conversations. </p>
+                    </div>
+                    <p style="margin-bottom: 32px; color: var(--text-muted); font-size: 1.1rem;">
+                        Whether you have a question about my work, want to collaborate on a project, or just want to say
+                        hi, feel free to reach out!
+                    </p>
+                    <div class="contact-links">
+                        <a href="mailto:hello@harshithkethavath.com" class="contact-btn">
+                            <span class="icon">📧</span> Email
+                        </a>
+                        <a href="https://linkedin.com/in/harshithkethavath" target="_blank" class="contact-btn">
+                            <span class="icon">💼</span> LinkedIn
+                        </a>
+                        <a href="https://github.com/harshithkethavath" target="_blank" class="contact-btn">
+                            <span class="icon">💻</span> GitHub
+                        </a>
+                        <a href="./assets/Harshith_Resume.pdf" target="_blank" class="contact-btn">
+                            <span class="icon">📄</span> Resume
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-image">
+                    <img src="./assets/image.png" alt="Harshith Kethavath">
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; 2025 Harshith Kethavath</p>
+        <div class="container">
+            <p>&copy; 2025 Harshith Kethavath. Built with Google Antigravity.</p>
+        </div>
     </footer>
 
+    <script src="script.js"></script>
 </body>
+
 </html>
