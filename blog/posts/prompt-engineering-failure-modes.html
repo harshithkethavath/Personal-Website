@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What 60 Experiments Taught Me About Prompt Engineering Failure Modes — Harshith Kethavath</title>
+  <meta name="description" content="We ran a controlled study with 60 prompt variants on satellite cloud segmentation. Most failed predictably. A few surprised us." />
+  <link rel="stylesheet" href="../../css/base.css" />
+  <link rel="stylesheet" href="../../css/nav.css" />
+  <link rel="stylesheet" href="../../css/pages/blog.css" />
+</head>
+<body class="nav-offset">
+
+  <!-- ============ NAV ============ -->
+  <div id="nav-placeholder"></div>
+
+  <main>
+
+    <!-- POST HEADER -->
+    <div class="post-header">
+      <div class="container">
+        <a href="../../blog/index.html" class="post-header__back">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          All posts
+        </a>
+        <span class="post-header__category">ML Research</span>
+        <h1 class="post-header__title">What 60 Experiments Taught Me About Prompt Engineering Failure Modes</h1>
+        <p class="post-header__excerpt">
+          We ran a controlled study with 60 prompt variants on satellite cloud segmentation.
+          Most failed in predictable ways. A few failed in ways that surprised us —
+          and those surprises turned out to be the paper.
+        </p>
+        <div class="post-header__meta">
+          <span>March 2026</span>
+          <span class="post-header__meta-dot"></span>
+          <span>8 min read</span>
+          <span class="post-header__meta-dot"></span>
+          <span>EarthVision 2026 · CVPR Workshop</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST BODY -->
+    <div class="post-body">
+
+      <p>
+        When we started this project, the question seemed simple: how much does prompt engineering
+        matter for vision-language models doing satellite imagery segmentation? We had CLIPSeg,
+        we had the CloudSEN12+ dataset, and we had a hypothesis that the right prompt could close
+        a meaningful gap with supervised fine-tuning.
+      </p>
+
+      <p>
+        Sixty experiments later, the answer is: it matters, but not in the way we expected.
+        And the way it doesn't matter turns out to be more interesting than the way it does.
+      </p>
+
+      <h2>The setup</h2>
+
+      <p>
+        We designed 60 prompt variants across several axes — specificity, technical language
+        vs. plain language, task framing, spectral references, and combinations thereof.
+        Each variant was evaluated on the same held-out CloudSEN12+ splits. We tracked
+        IoU across cloud classes: thick cloud, thin cloud, cloud shadow, and clear sky.
+      </p>
+
+      <p>
+        The dataset is harder than it looks. Thin cloud and cloud shadow are spectrally
+        ambiguous — thin cloud in particular can look like haze, like high-altitude cirrus,
+        or like nothing at all depending on the underlying surface. This matters a lot for
+        what came next.
+      </p>
+
+      <h2>What failed predictably</h2>
+
+      <p>
+        Most of the failure modes were unsurprising in retrospect. Overly generic prompts
+        ("segment the clouds") performed worse than specific ones. Prompts that referenced
+        spectral properties ("bright reflective regions") sometimes helped on thick cloud
+        but confused the model on thin cloud. Technical jargon without grounding performed
+        roughly the same as plain language.
+      </p>
+
+      <p>
+        The clearest finding was the 8-image threshold: below 8 labeled examples, sophisticated
+        prompting was genuinely competitive with LoRA fine-tuning. Above it, supervised
+        adaptation pulled ahead reliably. This crossover is stable across the prompt variants
+        we tested — it's not sensitive to which prompt you use, it's sensitive to whether
+        you have data.
+      </p>
+
+      <h2>The thing that surprised us</h2>
+
+      <p>
+        The interesting result was what happened to thin cloud and cloud shadow performance
+        as we added more labeled data to fine-tuning. You'd expect monotonic improvement.
+        What we saw was a dip — performance on these ambiguous classes temporarily <em>degraded</em>
+        as we added labels, before recovering at higher data volumes.
+      </p>
+
+      <blockquote>
+        <p>
+          The model was learning to be more confident in its representations before it had
+          learned to be confident in the right ones. The ambiguous classes got worse before
+          they got better.
+        </p>
+      </blockquote>
+
+      <p>
+        We call this the class-level supervision dip. It's not a noise artifact — it
+        replicates across seeds and across the prompt variants. And it has a practical
+        implication: if you're fine-tuning for a spectrally ambiguous segmentation task
+        and you evaluate at an intermediate data volume, you might conclude that fine-tuning
+        isn't helping when it actually just hasn't converged on the hard classes yet.
+      </p>
+
+      <h2>What this means practically</h2>
+
+      <p>
+        A few takeaways I'd carry forward from this work. First, if you're data-limited
+        (fewer than 8 examples), prompting is a legitimate strategy — don't dismiss it.
+        Second, if you're fine-tuning for tasks with spectrally ambiguous classes, don't
+        evaluate early and conclude it's not working. Third, the failure modes of prompting
+        are fairly systematic and worth characterizing before writing it off.
+      </p>
+
+      <p>
+        The paper goes into more depth on the experimental design and the statistical
+        analysis of the dip phenomenon. If you're working on similar problems, I'm happy
+        to talk through the setup.
+      </p>
+
+    </div>
+
+    <!-- POST FOOTER -->
+    <div class="post-footer">
+      <a href="../../blog/index.html" class="post-footer__back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to all posts
+      </a>
+    </div>
+
+  </main>
+
+
+  <!-- ============ FOOTER ============ -->
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/partials.js"></script>
+</body>
+</html>

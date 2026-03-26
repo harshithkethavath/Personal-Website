@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research — Harshith Kethavath</title>
+  <meta name="description" content="Research by Harshith Kethavath on computer vision, satellite imagery, and vision-language models." />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/pages/research.css" />
+</head>
+<body class="nav-offset">
+
+  <!-- ============ NAV ============ -->
+  <div id="nav-placeholder"></div>
+
+  <main>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <div class="container">
+        <p class="page-header__eyebrow">Research</p>
+        <h1 class="page-header__title">What I'm trying to understand</h1>
+        <p class="page-header__desc">
+          My research sits at the edge of what vision-language models can reliably do —
+          especially when the images are satellite data and the stakes are higher than
+          getting the caption wrong. I'm interested in both the failure modes and the
+          infrastructure needed to study them rigorously.
+        </p>
+      </div>
+    </div>
+
+    <!-- PAPERS GRID -->
+    <div class="container">
+      <div class="card-grid">
+
+        <!-- FEATURED — EarthVision 2026 -->
+        <article class="research-card research-card--featured">
+          <div class="research-card__body">
+            <div class="research-card__top">
+              <span class="research-card__venue">EarthVision 2026 · CVPR Workshop</span>
+              <span class="research-card__year">2026</span>
+            </div>
+            <h2 class="research-card__title">
+              Prompt Engineering Failure Modes and LoRA Adaptation in CLIPSeg
+              for Satellite Cloud Segmentation
+            </h2>
+            <p class="research-card__summary">
+              A controlled study of 60 prompt variants and fine-tuning strategies applied
+              to CLIPSeg on the CloudSEN12+ dataset. Rather than chasing benchmark numbers,
+              this work asks a harder question: <em>where exactly do vision-language models
+              break down</em>, and can low-rank adaptation fix it systematically?
+            </p>
+            <div class="research-card__findings">
+              <p class="research-card__findings-label">Key findings</p>
+              <p class="research-card__findings-text">
+                Supervised fine-tuning outperforms prompt engineering reliably above an
+                8-image threshold — below that, prompting is competitive. We also identified
+                a class-level supervision dip in spectrally ambiguous classes, where adding
+                more labeled data temporarily degrades performance before recovering.
+                This dip phenomenon is the paper's primary contribution.
+              </p>
+            </div>
+            <div class="research-card__footer">
+              <div class="research-card__tags">
+                <span class="tag">CLIPSeg</span>
+                <span class="tag">LoRA</span>
+                <span class="tag">Satellite Imagery</span>
+                <span class="tag">CloudSEN12+</span>
+                <span class="tag">Semantic Segmentation</span>
+                <span class="tag">VLMs</span>
+              </div>
+              <a href="#" class="research-card__link">
+                Read paper
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- MarsHazardNet -->
+        <article class="research-card">
+          <div class="research-card__top">
+            <span class="research-card__venue" style="background:var(--color-bg-subtle);color:var(--color-text-muted);border:1px solid var(--color-border);">In progress · Apr 2026</span>
+            <span class="research-card__year">2025–26</span>
+          </div>
+          <h2 class="research-card__title">
+            MarsHazardNet: Multi-task Terrain Hazard Prediction on Mars CTX Imagery
+          </h2>
+          <p class="research-card__summary">
+            A multi-task U-Net architecture for simultaneous hazard classification and
+            terrain segmentation on Mars Context Camera imagery. The core question is
+            whether shared representations across tasks improve reliability in
+            low-data extraterrestrial environments.
+          </p>
+          <div class="research-card__footer">
+            <div class="research-card__tags">
+              <span class="tag">U-Net</span>
+              <span class="tag">Multi-task Learning</span>
+              <span class="tag">Mars CTX</span>
+              <span class="tag">Terrain Analysis</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- WeatherMind VLM -->
+        <article class="research-card">
+          <div class="research-card__top">
+            <span class="research-card__venue" style="background:var(--color-bg-subtle);color:var(--color-text-muted);border:1px solid var(--color-border);">Research prototype</span>
+            <span class="research-card__year">2024–25</span>
+          </div>
+          <h2 class="research-card__title">
+            WeatherMind: Multi-model VLM Evaluation for Sky Imagery Weather Analysis
+          </h2>
+          <p class="research-card__summary">
+            A comparative framework for evaluating vision-language models —
+            Qwen2-VL, SmolVLM2, Moondream2, Gemma3 — on weather analysis
+            from ground-level sky photographs. Built to understand where each
+            model's visual reasoning holds up and where it doesn't.
+          </p>
+          <div class="research-card__footer">
+            <div class="research-card__tags">
+              <span class="tag">Qwen2-VL</span>
+              <span class="tag">SmolVLM2</span>
+              <span class="tag">Gemma3</span>
+              <span class="tag">Sky Imagery</span>
+              <span class="tag">VLM Evaluation</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- INTERESTS FOOTER -->
+    <div style="border-top:1px solid var(--color-border);padding:var(--space-16) 0 var(--space-24);">
+      <div class="container" style="max-width:680px;">
+        <p class="section-label" style="margin-bottom:var(--space-4);">What's next</p>
+        <p style="font-family:var(--font-serif);font-size:var(--text-lg);line-height:1.8;color:var(--color-text-muted);">
+          After graduating, I want to keep working on the gap between
+          research and production, how do you take a model that works in a notebook
+          and make it work reliably in the world? That question lives somewhere between
+          ML engineering and systems thinking, and it's where I intend to stay.
+        </p>
+      </div>
+    </div>
+
+  </main>
+
+
+  <!-- ============ FOOTER ============ -->
+  <div id="footer-placeholder"></div>
+
+  <script src="js/partials.js"></script>
+</body>
+</html>

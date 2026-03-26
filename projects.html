@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Harshith Kethavath</title>
+  <meta name="description" content="Projects by Harshith Kethavath — ML infrastructure, computer vision, and systems engineering." />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/pages/projects.css" />
+</head>
+<body class="nav-offset">
+
+  <!-- ============ NAV ============ -->
+  <div id="nav-placeholder"></div>
+
+  <main>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <div class="container">
+        <p class="page-header__eyebrow">Projects</p>
+        <h1 class="page-header__title">Things I've built</h1>
+        <p class="page-header__desc">
+          Most of these exist because I needed to learn something that a tutorial
+          couldn't teach me. A few are serious enough to put in production.
+          All of them taught me something I couldn't have read in a paper.
+        </p>
+      </div>
+    </div>
+
+    <!-- PROJECTS GRID -->
+    <div class="container">
+      <div class="projects-grid">
+
+        <!-- WeatherMind MLOps -->
+        <div class="project-card">
+          <div class="project-card__top">
+            <span class="project-card__status project-card__status--progress">In Progress</span>
+            <span class="project-card__year">2024–25</span>
+          </div>
+          <h2 class="project-card__name">WeatherMind MLOps</h2>
+          <p class="project-card__tagline">
+            Taking a research prototype and making it actually work in production.
+            WeatherMind is a multi-model VLM weather analysis system rebuilt as a
+            production-grade async inference service — FastAPI front, Celery/Redis
+            task queue, Kubernetes orchestration, Terraform-provisioned, with
+            Prometheus and Grafana watching everything.
+          </p>
+          <p class="project-card__note">Built locally on Minikube, written to be AWS-ready from day one. The point isn't the weather — it's what it takes to ship ML reliably.</p>
+          <div class="project-card__footer">
+            <div class="project-card__tags">
+              <span class="tag">FastAPI</span>
+              <span class="tag">Celery</span>
+              <span class="tag">Redis</span>
+              <span class="tag">Kubernetes</span>
+              <span class="tag">Terraform</span>
+              <span class="tag">Prometheus</span>
+              <span class="tag">Grafana</span>
+            </div>
+            <a href="https://github.com/yourusername/weathermind-mlops" target="_blank" rel="noopener" class="project-card__link">
+              GitHub
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- MarsHazardNet -->
+        <div class="project-card">
+          <div class="project-card__top">
+            <span class="project-card__status project-card__status--progress">In Progress</span>
+            <span class="project-card__year">2025–26</span>
+          </div>
+          <h2 class="project-card__name">MarsHazardNet</h2>
+          <p class="project-card__tagline">
+            A multi-task U-Net that simultaneously classifies terrain hazards and
+            segments surface features from Mars Context Camera imagery. Two outputs,
+            one shared encoder — the hypothesis being that joint training produces
+            richer representations than either task alone.
+          </p>
+          <p class="project-card__note">Due April 2026. Metrics will be added once complete.</p>
+          <div class="project-card__footer">
+            <div class="project-card__tags">
+              <span class="tag">U-Net</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">Multi-task</span>
+              <span class="tag">Mars CTX</span>
+              <span class="tag">Segmentation</span>
+            </div>
+            <a href="https://github.com/yourusername/marsHazardNet" target="_blank" rel="noopener" class="project-card__link">
+              GitHub
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- WeatherMind VLM -->
+        <div class="project-card">
+          <div class="project-card__top">
+            <span class="project-card__status project-card__status--prototype">Research prototype</span>
+            <span class="project-card__year">2024–25</span>
+          </div>
+          <h2 class="project-card__name">WeatherMind VLM</h2>
+          <p class="project-card__tagline">
+            The original research prototype that started everything. A multi-model
+            evaluation framework comparing Qwen2-VL, SmolVLM2, Moondream2, and Gemma3
+            on sky photograph weather analysis. Less about the weather, more about
+            understanding where each model's visual reasoning actually holds up.
+          </p>
+          <div class="project-card__footer">
+            <div class="project-card__tags">
+              <span class="tag">Qwen2-VL</span>
+              <span class="tag">SmolVLM2</span>
+              <span class="tag">Moondream2</span>
+              <span class="tag">Gemma3</span>
+              <span class="tag">Python</span>
+            </div>
+            <a href="https://github.com/yourusername/weathermind" target="_blank" rel="noopener" class="project-card__link">
+              GitHub
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Creo -->
+        <div class="project-card">
+          <div class="project-card__top">
+            <span class="project-card__status project-card__status--complete">Completed</span>
+            <span class="project-card__year">2023</span>
+          </div>
+          <h2 class="project-card__name">Creo</h2>
+          <p class="project-card__tagline">
+            An earlier engineering project. Add a one or two sentence description
+            of what Creo does, what problem it solved, and what you took away from it.
+          </p>
+          <div class="project-card__footer">
+            <div class="project-card__tags">
+              <span class="tag">Update tags</span>
+            </div>
+            <a href="https://github.com/yourusername/creo" target="_blank" rel="noopener" class="project-card__link">
+              GitHub
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+
+  <!-- ============ FOOTER ============ -->
+  <div id="footer-placeholder"></div>
+
+  <script src="js/partials.js"></script>
+</body>
+</html>
