@@ -463,6 +463,85 @@
   transition: color var(--transition-fast);
 }
 
+/* .post-list {
+  margin: var(--space-5) 0;
+  padding-left: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.post-list li {
+  font-family: var(--font-serif);
+  font-size: var(--text-base);
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  list-style: disc;
+}
+
+.post-list li strong {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--color-text);
+} */
+
+/* ============ POST IMAGES ============ */
+
+.post-figure {
+  margin: var(--space-10) 0;  /* this already adds space above/below the whole figure */
+}
+
+.post-figure img {
+  width: 100%;
+  max-width: 600px;        /* add this — controls max width */
+  display: block;
+  margin: 0 auto;          /* add this — centers it when smaller than full width */
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.post-figure figcaption {
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-8);   /* add this — space between caption and next paragraph */
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  text-align: center;              /* add this — looks cleaner when image is centered */
+  max-width: 600px;                /* add this — keeps caption aligned with image */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Side by side */
+.post-figure--grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.post-figure--grid img {
+  width: 100%;
+}
+
+.post-figure--grid figcaption {
+  margin-top: var(--space-2);
+}
+
+/* Contained (narrower, centered) */
+.post-figure--contained {
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 640px) {
+  .post-figure--grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .post-footer__back:hover { color: var(--color-accent); }
 .post-footer__back svg { transition: transform var(--transition-fast); }
 .post-footer__back:hover svg { transform: translateX(-3px); }

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What Cloud Segmentation Taught Us About Vision-Language Models</title>
+  <meta name="description" content="We tested whether prompt engineering can adapt vision-language models to satellite imagery. Across 60 prompt variants, every one failed. Eight labeled images beat them all." />
+  <link rel="stylesheet" href="../../css/base.css" />
+  <link rel="stylesheet" href="../../css/nav.css" />
+  <link rel="stylesheet" href="../../css/pages/blog.css" />
+</head>
+<body class="nav-offset">
+
+  <!-- ============ NAV ============ -->
+  <div id="nav-placeholder"></div>
+
+  <main>
+
+    <!-- POST HEADER -->
+    <div class="post-header">
+      <div class="container">
+        <a href="../../blog/index.html" class="post-header__back">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          All posts
+        </a>
+        <span class="post-header__category">ML Research</span>
+        <h1 class="post-header__title">What Cloud Segmentation Taught Us About Vision-Language Models</h1>
+        <p class="post-header__excerpt">
+          We tested whether prompt engineering can adapt vision-language models
+          to satellite imagery. Across 60 prompt variants on cloud
+          segmentation, every one underperformed the zero-shot baseline. But
+          fine-tuning with just 8 labeled images beat them all, and the
+          choice between LoRA and full fine-tuning turned out to be about
+          task structure, not compute.
+        </p>
+        <div class="post-header__meta">
+          <span>April 2026</span>
+          <span class="post-header__meta-dot"></span>
+          <span>Lab for Geoinformatics and AI Modeling</span>
+          <span class="post-header__meta-dot"></span>
+          <span>EarthVision 2026 · CVPR Workshop</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST BODY -->
+    <div class="post-body">
+
+      <p>
+        Most production AI systems today reach for pretrained models and prompt them.
+        A recent <a href="https://arxiv.org/abs/2512.04123">study</a> found 70% of production AI systems rely on prompting rather than weight tuning.
+        The logic is simple: prompting is cheap, labeling is expensive, and if the pretrained model is good enough,
+        language can steer it the rest of the way.
+      </p>
+
+      <p>
+        For natural images, this mostly works.
+        For satellite imagery, we found it doesn't work at all, and the cheap alternative to prompting turned out to be cheaper than we expected.
+      </p>
+
+      <p>
+        This post summarizes our paper,
+        <a href="https://arxiv.org/abs/2604.08956"><em>Low-Data Supervised Adaptation Outperforms Prompting for Cloud Segmentation Under Domain Shift</em></a>,
+        accepted at EarthVision 2026 (CVPR Workshop).
+      </p>
+
+      <h2>The setup</h2>
+
+      <p>
+        We picked a task where the domain shift from natural images is severe on two axes at once: cloud segmentation in Sentinel-2 satellite imagery.
+      </p>
+
+      <ul class="post-list">
+        <li><strong>Visually:</strong> overhead perspectives, multispectral sensors, atmospheric phenomena that blend into haze and shadows that lack hard edges. Nothing like the object-centric photos CLIP was trained on.</li>
+        <li><strong>Linguistically:</strong> vocabulary like "optically thin cirrus" or "cloud shadow" barely exists in CLIP's image-caption training corpus.</li>
+      </ul>
+
+      <p>
+        We used <a href="https://huggingface.co/CIDAS/clipseg-rd64-refined">CLIPSeg</a>, a promptable segmentation model built on a frozen CLIP backbone, and evaluated it on <a href="https://huggingface.co/datasets/isp-uv-es/CloudSEN12Plus">CloudSEN12+</a>, the largest expert-labeled cloud segmentation dataset available. The question was simple: under this kind of compound shift, can prompt engineering alone compensate, or is supervised adaptation necessary?
+      </p>
+
+      <h2>Finding 1: Every prompt we tried made things worse</h2>
+
+      <figure class="post-figure"  style="max-width: 500px; margin-left: auto; margin-right: auto;">
+        <img src="../../assets/cloudprompts/prompts.png" alt="Segmentation results across prompt variants" />
+        <figcaption>mIoU scores across all 60 prompt variants. Every engineered prompt falls below the zero-shot baseline.</figcaption>
+      </figure>
+
+      <p>
+        We designed 60 prompt variants (15 per class) spanning four strategies: minimal single-word labels, domain-specific meteorological terms, appearance descriptors, and contextual phrases. "White cloud," "wispy cloud," "bright white opaque cloud," "shadow beneath cloud," and so on.
+      </p>
+
+      <p>
+        Every single one underperformed the simple class-label baseline of 0.255 mIoU. The worst engineered prompt scored 0.07 mIoU, a 73% relative degradation. The best engineered variants clustered around 0.20 to 0.22, still clearly below baseline.
+      </p>
+
+      <p>
+        The most interesting failure came from negation. Prompts like "not cloud" or "not haze" produced the worst results of all. This isn't a quirk; it's architectural. CLIP's contrastive training does use negative examples, but those teach the model that specific images and captions don't match, not that the word "not" is a semantic operator. The text encoder never saw "not cloud" paired with cloud-free images during training. The embedding for "not cloud" remains dominated by "cloud." The word "not" carries no learned visual meaning.
+      </p>
+
+      <p>
+        This matters for a broader point: learnable prompt methods like CoOp and CoCoOp optimize within the same embedding space. If the space itself is misaligned with the target domain, prompt optimization runs into the same ceiling. The bottleneck isn't the prompt strategy. It's the visual encoder.
+      </p>
+
+      <h2>Finding 2: The crossover point is shockingly low</h2>
+
+      <figure class="post-figure"  style="max-width: 500px; margin-left: auto; margin-right: auto;">
+        <img src="../../assets/cloudprompts/low data.png" alt="mIoU across data percentages" />
+        <figcaption>mIoU as a function of training data percentage for LoRA and FFT.</figcaption>
+      </figure>
+
+      <p>
+        Having established that prompting can't bridge the gap, we asked the complementary question: how much labeled data does it take to beat the zero-shot baseline?
+      </p>
+
+      <blockquote>
+        <p>Eight images.</p>
+      </blockquote>
+
+      <p>
+        At 0.1% of the training set, approximately 8 labeled patches, both LoRA and full fine-tuning already surpass the zero-shot baseline on aggregate mIoU. At 5 to 10% of the data (roughly 425 to 850 images), we recover about 85% of the maximum achievable mIoU. Beyond 30%, additional labels yield diminishing returns that rarely justify the annotation cost.
+      </p>
+
+      <p>
+        This fundamentally changes the deployment math. The usual argument for zero-shot is "labeling is expensive, so we prompt." But if eight images is the crossover, that argument doesn't hold, even for a small research team or a practitioner working alone. Labeled data isn't the expensive alternative to prompting; for domains with real distribution shift, it's the worthwhile path.
+      </p>
+
+      <h2>Finding 3: LoRA vs. FFT is a task-structure decision, not a compute tradeoff</h2>
+
+      <figure class="post-figure"  style="max-width: 700px; margin-left: auto; margin-right: auto;">
+      <img src="../../assets/cloudprompts/cm.png" alt="Confusion Matrices across adaptation strategies" />
+      <figcaption>Confusion matrices for zero-shot, LoRA, and FFT at 100% training data. Diagonal entries represent per-class correct classification rates.</figcaption>
+
+      <p>
+        The conventional framing of LoRA vs. full fine-tuning is about resources: LoRA trades a little accuracy for a lot of parameter efficiency. Our results complicate that framing.
+      </p>
+
+      <p>
+        Across the full data sweep, FFT outperformed LoRA by a consistent 0.03 to 0.09 mIoU. But the aggregate number hides where the gap actually lives.
+      </p>
+
+      <p>
+        For spectrally distinct classes, clear sky and thick cloud, LoRA and FFT perform nearly identically. Both raise clear-sky classification from 0.59 (zero-shot) to ~0.92. Both push thick cloud from 0.32 to 0.88. When the classification boundary is visually unambiguous, the low-rank subspace is expressive enough.
+      </p>
+
+      <p>
+        For spectrally ambiguous classes, the picture changes sharply. On thin cloud, FFT reaches 0.61 classification accuracy against LoRA's 0.49, a 12-point gap. On cloud shadow, it's 0.69 vs. 0.56, a 13-point gap. These classes require fine-grained reshaping of representations to capture subtle spectral overlap: semi-transparent cloud layers against varied surface reflectance, shadow regions against dark terrain. Those distinctions are multi-dimensional in embedding space and exceed what a constrained low-rank subspace can express.
+      </p>
+
+      <p>
+        The practical rule that falls out: if your task is well-defined boundaries (separating cloud from no-cloud, say), LoRA is the right default. If your task involves spectrally ambiguous classes that downstream pipelines actually depend on, and in atmospheric correction, thin cloud and cloud shadow absolutely do, FFT's extra parameter cost is worth it.
+      </p>
+
+      <h2>The supervision dip: a warning about low-data fine-tuning</h2>
+
+      <figure class="post-figure"  style="max-width: 700px; margin-left: auto; margin-right: auto;">
+        <img src="../../assets/cloudprompts/per class low data.png" alt="Per class IoU across data percentages" />
+        <figcaption>Per-class IoU as a function of training data percentage for LoRA and FFT.</figcaption>
+      </figure>
+
+      <p>
+        One finding surprised us and deserves its own mention. For thin cloud and cloud shadow, supervised adaptation initially <em>degrades</em> performance below the zero-shot baseline before recovering.
+      </p>
+
+      <p>
+        Both classes dip at 0.5 to 1% labeled data and recover at 2.5 to 5%. The mechanism: too few representative examples aren't enough to reshape embeddings toward the target distribution, but are enough to disrupt whatever coherent structure existed in the zero-shot embedding. You get the worst of both regimes, you've broken the zero-shot representation without building a supervised one in its place.
+      </p>
+
+      <blockquote>
+        <p>
+          The aggregate mIoU curve doesn't show this, because gains on clear sky and thick cloud mask it. If you're fine-tuning with under 1% labeled data, monitor per-class performance, not just the mean.
+        </p>
+      </blockquote>
+
+      <p>
+        Stratified sampling strategies that guarantee minority-class representation in low-data subsets are a straightforward mitigation.
+      </p>
+
+      <h2>What this means for practitioners</h2>
+
+      <p>
+        If you're deploying vision-language models to a domain that diverges significantly from natural image pretraining such as satellite imagery, medical imaging, microscopy, industrial inspection, the defaults from the natural image literature may not apply. A few concrete takeaways:
+      </p>
+
+      <ul class="post-list">
+        <li><strong>Don't assume prompting will bridge a real domain gap.</strong> Test a zero-shot baseline, but budget for supervision. The cost of a few hundred labels is almost certainly lower than the cost of deploying a model that fails on your minority classes.</li>
+        <li><strong>Small label budgets go further than you'd expect.</strong> Targeting 5 to 10% of a reasonable dataset often recovers most of the achievable performance. Full labeling is rarely the right target.</li>
+        <li><strong>Choose adaptation based on where your hard classes live.</strong> If your difficult classes are spectrally or visually ambiguous, prefer full fine-tuning. If they're well-separated, LoRA is fine.</li>
+        <li><strong>Watch per-class metrics in low-data regimes.</strong> Aggregate mIoU can hide real harm to the classes you probably care about most.</li>
+      </ul>
+
+      <p>
+        The broader claim is this: for specialized imagery, the choice to prompt rather than fine-tune has mostly been inherited from a different deployment context. It deserves to be re-examined.
+      </p>
+
+      <p>
+        The paper, code, and models are available on <a href="https://github.com/uga-gaim/2026_CVPRW_CloudPrompts">GitHub</a> and <a href="https://huggingface.co/collections/uga-gaim/2026-cvprw-cloudprompts">HuggingFace</a>. This work was done at the University of Georgia's <a href="https://weiming.uga.edu/gaim">Lab for Geoinformatics and AI Modeling (GAIM)</a>.
+      </p>
+
+    </div>
+
+    <!-- POST FOOTER -->
+    <div class="post-footer">
+      <a href="../../blog/index.html" class="post-footer__back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to all posts
+      </a>
+    </div>
+
+  </main>
+
+
+  <!-- ============ FOOTER ============ -->
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/partials.js"></script>
+</body>
+</html>
